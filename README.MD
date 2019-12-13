@@ -1,0 +1,1 @@
+Developing first commit for note taking
