@@ -13,7 +13,7 @@ Pillars:
 -TYPES, often avoided in JS thinking. Irresponsible to not understand this fact of the language
 Primitive Types
 Abstract Operations
-Coercion 
+Coercion
 Equality
 Typescript, Flow, etc.
 
@@ -69,7 +69,7 @@ Strongly typed languages require that when you declare a variable of a particula
 a = 50;
 a= "50" would be illegal in that circumstance and throw an error and halt the operation of the compile.
 A weakly typed language allows such type changes above and are perfectly legal.
-Type checking is meant to confirm that we don't perform an action such as adding a number to a float or 
+Type checking is meant to confirm that we don't perform an action such as adding a number to a float or
 a = "50" = 2
 
 Static typing usually allows for compiled code that executes more quickly as since the compiler knows the exact data types that are being use this can result in machine code that uses less memory and performs faster. With dynamically typed variables are bound to objects at run time by means of assignment statements and it is possible to bind a variable objects of different types multiple times throughout the program. Errors appear at run time and not compile time and require more error checking. run time type information RTTI can allow late binding, there is no separate compilation step to wait on so you can debug a bit faster as errors appear during run time.
@@ -79,4 +79,29 @@ For example for type of v; statement we are not asking what is the type of varia
 
 when there is no value that value that you have is undefined. undefined indicates it does not currently have a value. You can have a variable that had a value and then was made undefined.
 
+null is not an object, if you want to unset an object reference you use null but this is a bug.
 
+typeof function will say function. we can use Array.isArray and other tools will help us distinguish further when needed.
+
+BigInt can grow infinitely large up to the space of the memory in the system. not an i eee number like other numbers and they don't mix and match with other numbers.
+
+-Undefined vs undeclared-
+
+variable doesn't exist and will get back undefined when in reality that variable doesn't exist and it should have returned back undeclared. typeof is able to reference a thing that doesn't exist and not throw an error.
+
+unitialized introduced with ES6 (aka TDZ) temporal dead zone. Certain variables like block scope never get initialized, three ways something can by empty in JS undefined exists but no value, undeclared do not exist, variable unitialized never get set to undefined. undefined initialized is undefined, never been initialized unitialized, never even created undeclared.
+
+Special Values
+NaN ("not a number") essentially it means sentinel value that means invalid number. Zero is not absense of numerical value in a programattic sense. NaN is the number that indicates it's not a valid number var myCatsAge = Number("n/a"); The myAge - "my son's age" turns that into NaN value, NaN equations equals NaN, myCatsAge === myCatsAge is NaN not equal. NaN does not have identity value of being equal to itself. undefined is equal to itself. undefined === undefined
+
+isValue utility coerces things to numbers before it checks if it is NaN. isNaN("my son's age") it will coerce this string to the NaN value. Read spec and ES6 Number.isNaN does not do any coercion to a number first. NaN is an Invalid Number, the typeOf a NaN is a number it's just invalid. NaN results from a numeric operation that returns what is not a number. It is a numeric representation of an invalid number. If you want to return to someone that there is no valid number return NaN not -1. No valid number return NaN. Test for NaN appropriately.
+
+Negative Zero exists in programming. IEEE 754, 0 with - on it.
+
+Languages should do the correct thing and it is on developers to do what is reasonable to users.
+.toString lies to us when doing -0, also trendRate = -0, trendRate === 0 is incorrect, < > also don't work to -0
+
+Object.is(trendRate, -0); true
+Object.is(trendRate, 0) false j Object.is is like a quadruple zero, can also check NaN with Object.is.
+
+Mapping solution, -0 for directions can be useful, Math.sign returns, -0 can have uses such as based on trend values.
