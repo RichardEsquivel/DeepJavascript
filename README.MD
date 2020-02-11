@@ -105,3 +105,10 @@ Object.is(trendRate, -0); true
 Object.is(trendRate, 0) false j Object.is is like a quadruple zero, can also check NaN with Object.is.
 
 Mapping solution, -0 for directions can be useful, Math.sign returns, -0 can have uses such as based on trend values.
+
+NaN value and -0 value.
+
+
+Infinity is a built in constant in JS
+
+Reviewing section for notes tomorow.
